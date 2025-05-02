@@ -11,10 +11,17 @@ import Hero4 from "../hero/Hero4";
 // import Hero4 from "../sections/Hero/Hero4";
 
 import Features1 from "../feature/Feature1";
+import Features2 from "../feature/Feature2";
+import Features3 from "../feature/Feature3";
+import Features4 from "../feature/Feature4";
 // import Features2 from "../Features/Features2";
 
 import Testimonials1 from "../testimonials/Testimonials1";
+import Testimonials2 from "../testimonials/Testimonials2";
+import Testimonials3 from "../testimonials/Testimonials3";
+import Testimonials4 from "../testimonials/Testimonials4";
 import CTA1 from "../cta/CTA1";
+
 
 // Map section type+variant to component
 const sectionComponents = {
@@ -23,8 +30,13 @@ const sectionComponents = {
   Hero3,
   Hero4,
   Features1,
-  // Features2,
+  Features2,
+  Features3,
+  Features4,
   Testimonials1,
+  Testimonials2,
+  Testimonials3,
+  Testimonials4,
   CTA1,
 };
 

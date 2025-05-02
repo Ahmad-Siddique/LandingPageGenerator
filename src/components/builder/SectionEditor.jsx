@@ -4,7 +4,8 @@ import { BuilderContext } from "../../context/BuilderContext";
 
 import HeroEditor from "./SectionEditorSections/HeroEditor";
 import FeaturesEditor from "./SectionEditorSections/FeatureEditor";
-// import TestimonialsEditor from "./TestimonialsEditor";
+import TestimonialsEditor from "./SectionEditorSections/TestimonialEditor";
+
 // import CTAEditor from "./CTAEditor";
 
 export default function SectionEditor() {
@@ -22,10 +23,10 @@ export default function SectionEditor() {
       {selectedSection?.type === "Features" && (
         <FeaturesEditor section={selectedSection} />
       )}
-      {/* {selectedSection?.type === "Testimonials" && (
+      {selectedSection?.type === "Testimonials" && (
         <TestimonialsEditor section={selectedSection} />
       )}
-      {selectedSection?.type === "CTA" && (
+      {/* {selectedSection?.type === "CTA" && (
         <CTAEditor section={selectedSection} />
       )} */}
       {!selectedSection && (

@@ -1,3 +1,10 @@
+
+const ensureProtocol = (url) => {
+  if (!url) return "#";
+  if (/^https?:\/\//i.test(url)) return url;
+  return "https://" + url;
+};
+
 const Hero1 = ({
   title,
   subtitle,
@@ -26,7 +33,7 @@ const Hero1 = ({
       </p>
       <div className="flex gap-4">
         <a
-          href={primaryBtnLink}
+          href={ensureProtocol(primaryBtnLink)}
           className="px-6 py-3 rounded-lg"
           style={{
             backgroundColor: primaryColor,
@@ -34,6 +41,8 @@ const Hero1 = ({
             textDecoration: "none",
           }}
         >
+          
+        
           {primaryBtn}
         </a>
         <a

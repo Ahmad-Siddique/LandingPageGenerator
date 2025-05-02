@@ -15,18 +15,47 @@ const heroDesigns = [
   { value: "Hero4", label: "Top Border Accent" },
 ];
 
+const featureDesigns = [
+  { value: "Features1", label: "Grid Layout" },
+  { value: "Features2", label: "Horizontal Scroll" },
+  { value: "Features3", label: "Vertical List" },
+  { value: "Features4", label: "Minimal Icons" },
+];
+
+// Testimonials variants
+const testimonialDesigns = [
+  { value: "Testimonials1", label: "Grid Cards" },
+  { value: "Testimonials2", label: "Centered Slider" },
+  { value: "Testimonials3", label: "Minimal List" },
+  { value: "Testimonials4", label: "Accent Border Grid" },
+];
+
 export default function AddSectionPanel() {
   const { addSection } = useContext(BuilderContext);
   const [selectedHeroDesign, setSelectedHeroDesign] = useState(
     heroDesigns[0].value
   );
+  const [selectedFeatureDesign, setSelectedFeatureDesign] = useState(
+    featureDesigns[0].value
+  );
+  const [selectedTestimonialDesign, setSelectedTestimonialDesign] = useState(
+    testimonialDesigns[0].value
+  );
 
   const handleAddSection = (sectionType) => {
+    let config = { type: sectionType };
+
     if (sectionType === "Hero") {
-      addSection({ type: "Hero", variant: selectedHeroDesign });
-    } else {
-      addSection(sectionType);
+      config.variant = selectedHeroDesign;
     }
+    if (sectionType === "Features") {
+      config.variant = selectedFeatureDesign;
+    }
+    if (sectionType === "Testimonials") {
+      config.variant = selectedTestimonialDesign;
+    }
+
+    addSection(config);
   };
 
   return (
@@ -35,7 +64,7 @@ export default function AddSectionPanel() {
         Add Section
       </h3>
       <div className="space-y-4">
-        {/* Hero Section with dropdown */}
+        {/* Hero Section Dropdown */}
         <div>
           <label className="block mb-1 font-medium text-gray-700 text-sm">
             Hero Design
@@ -59,9 +88,59 @@ export default function AddSectionPanel() {
           </button>
         </div>
 
-        {/* Other sections */}
+        {/* Features Section Dropdown */}
+        <div>
+          <label className="block mb-1 font-medium text-gray-700 text-sm">
+            Feature Design
+          </label>
+          <select
+            value={selectedFeatureDesign}
+            onChange={(e) => setSelectedFeatureDesign(e.target.value)}
+            className="w-full p-2 border border-gray-300 rounded focus:ring-2 focus:ring-gray-200 transition"
+          >
+            {featureDesigns.map((design) => (
+              <option key={design.value} value={design.value}>
+                {design.label}
+              </option>
+            ))}
+          </select>
+          <button
+            onClick={() => handleAddSection("Features")}
+            className="mt-2 w-full p-2 bg-gray-100 rounded hover:bg-gray-900 hover:text-white transition cursor-pointer font-medium"
+          >
+            + Add Feature Section
+          </button>
+        </div>
+
+        {/* Testimonials Section Dropdown */}
+        <div>
+          <label className="block mb-1 font-medium text-gray-700 text-sm">
+            Testimonial Design
+          </label>
+          <select
+            value={selectedTestimonialDesign}
+            onChange={(e) => setSelectedTestimonialDesign(e.target.value)}
+            className="w-full p-2 border border-gray-300 rounded focus:ring-2 focus:ring-gray-200 transition"
+          >
+            {testimonialDesigns.map((design) => (
+              <option key={design.value} value={design.value}>
+                {design.label}
+              </option>
+            ))}
+          </select>
+          <button
+            onClick={() => handleAddSection("Testimonials")}
+            className="mt-2 w-full p-2 bg-gray-100 rounded hover:bg-gray-900 hover:text-white transition cursor-pointer font-medium"
+          >
+            + Add Testimonial Section
+          </button>
+        </div>
+
+        {/* Other sections (CTA) */}
         {Object.keys(sectionLabels)
-          .filter((type) => type !== "Hero")
+          .filter(
+            (type) => !["Hero", "Features", "Testimonials"].includes(type)
+          )
           .map((sectionType) => (
             <button
               key={sectionType}

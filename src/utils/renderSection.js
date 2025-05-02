@@ -1,6 +1,6 @@
 import { renderHero } from "./render/renderHero";
 import { renderFeatures } from "./render/renderFeature";
-// import { renderTestimonials } from "./renderTestimonials";
+import { renderTestimonials } from "./render/renderTestimonials";
 // import { renderCTA } from "./renderCTA";
 
 export const renderSection = (section) => {
@@ -11,10 +11,10 @@ export const renderSection = (section) => {
       return renderHero(section);
     case "Features":
       return renderFeatures(section);
-    // case "Testimonials":
-    //   return renderTestimonials(section);
-    // case "CTA":
-    //   return renderCTA(section);
+    case "Testimonials":
+      return renderTestimonials(section);
+    case "CTA":
+      return renderCTA(section);
     default:
       return "";
   }
